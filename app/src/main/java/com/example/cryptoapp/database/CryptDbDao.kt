@@ -12,15 +12,15 @@ import com.example.cryptoapp.pojo.CoinPriceInfo
 @Dao
 interface CryptDbDao {
 
-    @Query("Select * from CoinPriceInfo order by lastupdate")
-    fun getListCoinInfo(): LiveData<List<CoinInfo>>
+    @Query("Select * from CoinPriceInfo order by lastupdate desc")
+    fun getListCoinInfo(): LiveData<List<CoinPriceInfo>>
 
     @Query("select * from CoinPriceInfo where fromsymbol = :fSym limit 1")
     fun getCoinPriceInfo(fSym: String): LiveData<CoinPriceInfo>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE, entity = CoinPriceInfo::class)
-    fun addCoinPriceInfo(coinPriceInfo: CoinPriceInfo)
+    fun addCoinPriceInfoList(coinPriceInfo: List<CoinPriceInfo>)
 
 
 

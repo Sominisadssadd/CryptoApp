@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class CoinListInfo(
     @SerializedName("Data")
     @Expose
-    val data: List<Datum>?=null
+    var data: List<Datum>?=null
 )
