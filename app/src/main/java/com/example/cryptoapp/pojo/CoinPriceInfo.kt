@@ -169,6 +169,8 @@ data class CoinPriceInfo(
     @SerializedName("IMAGEURL")
     @Expose
     val imageurl: String?,
+
+
 ) {
 
     fun getConvertedTime(): String {

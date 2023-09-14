@@ -18,7 +18,6 @@ interface CryptDbDao {
     @Query("select * from CoinPriceInfo where fromsymbol = :fSym limit 1")
     fun getCoinPriceInfo(fSym: String): LiveData<CoinPriceInfo>
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE, entity = CoinPriceInfo::class)
     fun addCoinPriceInfoList(coinPriceInfo: List<CoinPriceInfo>)
 

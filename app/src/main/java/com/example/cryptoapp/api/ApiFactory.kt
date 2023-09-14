@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiFactory {
 
     private const val BASE_URL = "https://min-api.cryptocompare.com/data/"
-    const val BASE_IMAGE_URL = "https://min-api.cryptocompare.com/"
+    const val BASE_IMAGE_URL = "https://cryptocompare.com"
     private const val API_TAG = "CRYPT_API"
 
     private fun createRetrofitExemplar(): Retrofit {

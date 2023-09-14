@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CryptoApp</string>
+    <string name="text_view_coin_name_formatted">%s / %s</string>
+    <string name="text_view_last_update_formatted">Последнее обновление: %s</string>
+
+    <string name="textViewCost">Стоимость: %s</string>
+    <string name="textMinDay">Минимум за день: %s</string>
+    <string name="textMaxDay">Максимум за день: %s</string>
+    <string name="textViewDeal">Последняя сделка: %s</string>
+    <string name="textViewUpdate">Обновленно: %s</string>
+
 </resources>
