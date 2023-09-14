@@ -63,7 +63,7 @@ class CoinPriceInfoActivity : AppCompatActivity() {
             )
             textViewLastUpdateCoinInfo.text = String.format(
                 getString(R.string.textViewUpdate),
-                coinPriceInfo.lastupdate
+                coinPriceInfo.getConvertedTime()
             )
             Picasso.get().load(coinPriceInfo.getFullImagePath()).into(imageViewCoinInfo)
         }
