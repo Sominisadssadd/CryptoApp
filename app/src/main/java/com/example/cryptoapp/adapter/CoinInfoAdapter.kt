@@ -8,8 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoapp.R
-import com.example.cryptoapp.pojo.CoinInfo
-import com.example.cryptoapp.pojo.CoinPriceInfo
+import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
 import com.squareup.picasso.*
 
 class CoinInfoAdapter(val context: Context) : RecyclerView.Adapter<CoinInfoAdapter.MyViewHolder>() {
@@ -17,7 +16,7 @@ class CoinInfoAdapter(val context: Context) : RecyclerView.Adapter<CoinInfoAdapt
 
     var onClickListener: ((coinName: String) -> Unit)? = null
 
-    var listOfCoinInfo: List<CoinPriceInfo> = arrayListOf()
+    var listOfCoinInfo: List<CoinPriceInfoDbModel> = arrayListOf()
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.cryptoapp.api.ApiFactory
-import com.example.cryptoapp.database.CryptDataBase
-import com.example.cryptoapp.pojo.CoinPriceInfo
-import com.example.cryptoapp.pojo.CoinPriceInfoRawData
+import com.example.cryptoapp.data.CryptDataBase
+import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
+import com.example.cryptoapp.data.entities.CoinPriceInfoRawData
 import com.google.gson.Gson
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -20,7 +20,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
         loadData()
     }
 
-    fun getSinglePriceInfo(fSym: String): LiveData<CoinPriceInfo> {
+    fun getSinglePriceInfo(fSym: String): LiveData<CoinPriceInfoDbModel> {
         return dbDao.getCoinPriceInfo(fSym)
     }
 
@@ -42,9 +42,9 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
                 })
     }
 
-    private fun parseJsonObject(coinPriceInfoRawData: CoinPriceInfoRawData): List<CoinPriceInfo> {
+    private fun parseJsonObject(coinPriceInfoRawData: CoinPriceInfoRawData): List<CoinPriceInfoDbModel> {
 
-        val priceListInfo = mutableListOf<CoinPriceInfo>()
+        val priceListInfo = mutableListOf<CoinPriceInfoDbModel>()
         val jsonObject = coinPriceInfoRawData.raw ?: return emptyList()
         val ketSet = jsonObject.keySet()
         for (key in ketSet) {
@@ -53,7 +53,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
             for (currentKey in currentKeySet) {
                 val coinPriceInfo = Gson().fromJson(
                     currentJsonObject.getAsJsonObject(currentKey),
-                    CoinPriceInfo::class.java
+                    CoinPriceInfoDbModel::class.java
                 )
                 priceListInfo.add(coinPriceInfo)
             }

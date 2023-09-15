@@ -4,11 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptoapp.databinding.ActivityCoinPriceInfoBinding
-import com.example.cryptoapp.pojo.CoinPriceInfo
+import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
 import com.squareup.picasso.Picasso
 
 class CoinPriceInfoActivity : AppCompatActivity() {
@@ -38,7 +36,7 @@ class CoinPriceInfoActivity : AppCompatActivity() {
 
     }
 
-    private fun updateFields(coinPriceInfo: CoinPriceInfo) {
+    private fun updateFields(coinPriceInfo: CoinPriceInfoDbModel) {
         with(binding) {
             textViewNameCoinInfo.text = String.format(
                 getString(R.string.text_view_coin_name_formatted),

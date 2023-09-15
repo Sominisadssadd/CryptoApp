@@ -30,9 +30,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
+    dataBinding {
+        enabled = true
+    }
+
+
 }
 
 dependencies {
@@ -60,8 +65,13 @@ dependencies {
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    
+    //databinding
+    implementation 'androidx.databinding:databinding-runtime:7.1.0'
 
-
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
 }
