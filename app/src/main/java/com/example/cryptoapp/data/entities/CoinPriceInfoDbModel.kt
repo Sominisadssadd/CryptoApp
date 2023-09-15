@@ -1,4 +1,4 @@
-package com.example.cryptoapp.pojo
+package com.example.cryptoapp.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName
 
 
 @Entity(tableName = "CoinPriceInfo")
-data class CoinPriceInfo(
+data class CoinPriceInfoDbModel(
 
 
     @SerializedName("TYPE")
