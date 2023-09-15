@@ -67,6 +67,7 @@ class CoinInfoAdapter(val context: Context) : RecyclerView.Adapter<CoinInfoAdapt
 
 
 
+
     }
 
     override fun getItemCount() = listOfCoinInfo.size
