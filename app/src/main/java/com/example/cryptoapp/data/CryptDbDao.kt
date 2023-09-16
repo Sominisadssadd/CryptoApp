@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
+import com.example.cryptoapp.data.database.entitiesDb.CoinPriceInfoDbModel
 
 
 @Dao

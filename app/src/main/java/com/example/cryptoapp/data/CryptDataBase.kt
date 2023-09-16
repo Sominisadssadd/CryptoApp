@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
+import com.example.cryptoapp.data.database.entitiesDb.CoinPriceInfoDbModel
 
 @Database(entities = [CoinPriceInfoDbModel::class], version = 1, exportSchema = false)
 abstract class CryptDataBase : RoomDatabase() {
@@ -15,7 +15,7 @@ abstract class CryptDataBase : RoomDatabase() {
     companion object {
 
         private var instance: CryptDataBase? = null
-        private const val DATABASE_NAME = "Crypto.db"
+        private const val DATABASE_NAME = "Cry.db"
         private val LOCK = Any()
 
         fun getInstance(context: Context): CryptDataBase {

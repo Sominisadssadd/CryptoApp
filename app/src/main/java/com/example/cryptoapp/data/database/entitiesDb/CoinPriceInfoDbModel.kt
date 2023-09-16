@@ -1,15 +1,18 @@
-package com.example.cryptoapp.domain.pojo
+package com.example.cryptoapp.data.database.entitiesDb
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
-data class CoinPriceInfo(
+
+@Entity(tableName = "CoinPriceInfo")
+data class CoinPriceInfoDbModel(
+
 
     val type: String?,
 
     val market: String?,
 
+    @PrimaryKey
     val fromsymbol: String,
 
     val tosymbol: String?,
@@ -83,4 +86,6 @@ data class CoinPriceInfo(
     val conversionlastupdate: Int?,
 
     val imageurl: String?,
+
+
 )

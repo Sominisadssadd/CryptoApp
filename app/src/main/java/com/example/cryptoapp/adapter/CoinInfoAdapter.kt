@@ -8,8 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoapp.R
-import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
-import com.squareup.picasso.*
+import com.example.cryptoapp.data.database.entitiesDb.CoinPriceInfoDbModel
 
 class CoinInfoAdapter(val context: Context) : RecyclerView.Adapter<CoinInfoAdapter.MyViewHolder>() {
 
@@ -44,25 +43,25 @@ class CoinInfoAdapter(val context: Context) : RecyclerView.Adapter<CoinInfoAdapt
         val currentCoin = listOfCoinInfo[position]
 
 
-        with(holder) {
-            textViewCoinName.text = String.format(
-                context.getString(R.string.text_view_coin_name_formatted),
-                currentCoin.fromsymbol,
-                currentCoin.tosymbol
-            )
-            textViewCoinPrice.text = currentCoin.price.toString()
-            textViewLastUpdate.text = String.format(
-                context.getString(R.string.text_view_last_update_formatted),
-                currentCoin.getConvertedTime()
-            )
-            Picasso.get()
-                .load(currentCoin.getFullImagePath())
-                .into(imageViewCoin)
-
-            itemView.setOnClickListener {
-                onClickListener?.invoke(currentCoin.fromsymbol)
-            }
-        }
+//        with(holder) {
+//            textViewCoinName.text = String.format(
+//                context.getString(R.string.text_view_coin_name_formatted),
+//                currentCoin.fromsymbol,
+//                currentCoin.tosymbol
+//            )
+//            textViewCoinPrice.text = currentCoin.price.toString()
+//            textViewLastUpdate.text = String.format(
+//                context.getString(R.string.text_view_last_update_formatted),
+//                currentCoin.getConvertedTime()
+//            )
+//            Picasso.get()
+//                .load(currentCoin.getFullImagePath())
+//                .into(imageViewCoin)
+//
+//            itemView.setOnClickListener {
+//                onClickListener?.invoke(currentCoin.fromsymbol)
+//            }
+//        }
 
 
 
