@@ -1,8 +1,7 @@
-package com.example.cryptoapp.api
+package com.example.cryptoapp.data.api
 
-import com.example.cryptoapp.data.entities.CoinListInfo
-import com.example.cryptoapp.data.entities.CoinPriceInfoRawData
-import io.reactivex.rxjava3.core.Single
+import com.example.cryptoapp.data.api.entitiesApi.CoinListInfo
+import com.example.cryptoapp.data.api.entitiesApi.CoinPriceInfoRawData
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,19 +10,19 @@ interface ApiService {
 
 
     @GET("top/totalvolfull")
-    fun getListOfCoins(
+    suspend fun getListOfCoins(
         @Query(API_KEY_KEY) apiKey: String = API_KEY,
         @Query(KEY_LIMIT) limit: Int = 10,
         @Query(KEY_TSYM_FOR_FIRST_REQUEST) tSym: String = MAIN_CURRENCY,
-    ): Single<CoinListInfo>
+    ): CoinListInfo
 
 
     @GET("pricemultifull")
-    fun getPriceInfo(
+    suspend fun getPriceInfo(
         @Query(API_KEY_KEY) apiKey: String = API_KEY,
         @Query(KEY_FSYM) fSym: String,
         @Query(KEY_TSYM_FOR_SECOND_REQUEST) tSym: String = MAIN_CURRENCY
-    ): Single<CoinPriceInfoRawData>
+    ): CoinPriceInfoRawData
 
     companion object {
         private const val API_KEY_KEY = "api_key"

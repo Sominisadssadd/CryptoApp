@@ -3,13 +3,10 @@ package com.example.cryptoapp
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.cryptoapp.api.ApiFactory
 import com.example.cryptoapp.data.CryptDataBase
-import com.example.cryptoapp.data.entities.CoinPriceInfoDbModel
-import com.example.cryptoapp.data.entities.CoinPriceInfoRawData
+import com.example.cryptoapp.data.database.entitiesDb.CoinPriceInfoDbModel
+import com.example.cryptoapp.data.api.entitiesApi.CoinPriceInfoRawData
 import com.google.gson.Gson
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -17,7 +14,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     val listOfCoinInfo = dbDao.getListCoinInfo()
 
     init {
-        loadData()
+//        loadData()
     }
 
     fun getSinglePriceInfo(fSym: String): LiveData<CoinPriceInfoDbModel> {
@@ -25,22 +22,22 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    private fun loadData() {
-        ApiFactory.apiService.getListOfCoins()
-            .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") ?: "" }
-            .flatMap { ApiFactory.apiService.getPriceInfo(fSym = it) }
-            .map { parseJsonObject(it) }
-            .delaySubscription(10, TimeUnit.SECONDS)
-            .repeat()
-            .retry()
-            .subscribeOn(Schedulers.io())
-            .subscribe({
-                dbDao.addCoinPriceInfoList(it)
-            },
-                {
-
-                })
-    }
+//    private fun loadData() {
+//        ApiFactory.apiService.getListOfCoins()
+//            .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") ?: "" }
+//            .flatMap { ApiFactory.apiService.getPriceInfo(fSym = it) }
+//            .map { parseJsonObject(it) }
+//            .delaySubscription(10, TimeUnit.SECONDS)
+//            .repeat()
+//            .retry()
+//            .subscribeOn(Schedulers.io())
+//            .subscribe({
+//                dbDao.addCoinPriceInfoList(it)
+//            },
+//                {
+//
+//                })
+//    }
 
     private fun parseJsonObject(coinPriceInfoRawData: CoinPriceInfoRawData): List<CoinPriceInfoDbModel> {
 

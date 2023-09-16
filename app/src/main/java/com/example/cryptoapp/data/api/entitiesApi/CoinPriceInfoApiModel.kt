@@ -1,16 +1,12 @@
-package com.example.cryptoapp.data.entities
+package com.example.cryptoapp.data.api.entitiesApi
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.example.cryptoapp.api.ApiFactory.BASE_IMAGE_URL
-import com.example.cryptoapp.utils.convertLongDataToNormalTime
+
+import com.example.cryptoapp.data.utils.convertLongDataToNormalTime
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
 
-
-@Entity(tableName = "CoinPriceInfo")
-data class CoinPriceInfoDbModel(
+data class CoinPriceInfoApiModel(
 
 
     @SerializedName("TYPE")
@@ -21,7 +17,7 @@ data class CoinPriceInfoDbModel(
     @Expose
     val market: String?,
 
-    @PrimaryKey
+
     @SerializedName("FROMSYMBOL")
     @Expose
     val fromsymbol: String,
@@ -171,13 +167,4 @@ data class CoinPriceInfoDbModel(
     val imageurl: String?,
 
 
-) {
-
-    fun getConvertedTime(): String {
-        return convertLongDataToNormalTime(lastupdate?.toLong())
-    }
-
-    fun getFullImagePath(): String {
-        return BASE_IMAGE_URL + imageurl
-    }
-}
+)
