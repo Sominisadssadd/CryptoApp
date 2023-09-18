@@ -1,57 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardUseCompatPadding="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<layout>
+
+    <data>
+
+        <variable
+            name="coinPriceInfo"
+            type="com.example.cryptoapp.domain.pojo.CoinPriceInfo" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardUseCompatPadding="true">
 
-        <ImageView
-            android:id="@+id/imageOfCoinInList"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_launcher_background" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewCoinName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="USD / BTC" />
+            <ImageView
+                android:id="@+id/imageOfCoinInList"
+                setImageForListItem="@{coinPriceInfo.imageurl}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:id="@+id/textViewCoinPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewCoinName"
-            tools:text="8320.42" />
+            <TextView
+                android:id="@+id/textViewCoinName"
+                setTextCoinNameFLI="@{coinPriceInfo}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
 
-        <TextView
-            android:id="@+id/textViewLastUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewCoinPrice"
-            tools:text="Время последнего обновления: 21:11:49" />
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="USD / BTC" />
+
+            <TextView
+                android:id="@+id/textViewCoinPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@{coinPriceInfo.price.toString()}"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewCoinName"
+                tools:text="8320.42" />
+
+            <TextView
+                android:id="@+id/textViewLastUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                setLastUpdateText="@{coinPriceInfo.lastupdate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewCoinPrice"
+                tools:text="Время последнего обновления: 21:11:49" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+</layout>

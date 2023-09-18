@@ -6,9 +6,9 @@ import com.example.cryptoapp.domain.pojo.CoinPriceInfo
 
 interface CryptDbRepository {
 
-    fun addCoinPriceInfoList(list: List<CoinPriceInfoDbModel>)
+    suspend fun addCoinPriceInfoList(list: List<CoinPriceInfoDbModel>)
 
-    fun getSingleCoinPriceInfo(fSym: String): LiveData<CoinPriceInfo>
+     fun getSingleCoinPriceInfo(fSym: String): LiveData<CoinPriceInfo>
 
-    fun getListOfCoinsFromDb(): LiveData<List<CoinPriceInfo>>
+     fun getListOfCoinsFromDb(): LiveData<List<CoinPriceInfo>>
 }

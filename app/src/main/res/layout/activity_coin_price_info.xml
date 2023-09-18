@@ -1,108 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragmentContainerCoinPriceInfo"
     android:padding="15dp"
-    tools:context=".CoinPriceInfoActivity">
+    tools:context=".presentation.CoinPriceInfoActivity">
 
 
-    <ImageView
-        android:id="@+id/imageViewCoinInfo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_launcher_background" />
-
-    <TextView
-        android:id="@+id/textViewNameCoinInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewCoinInfo"
-        tools:text="BTC / USD" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="30dp"
-        android:orientation="vertical"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewNameCoinInfo">
-
-        <TextView
-            android:id="@+id/textViewCostCoinInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            tools:text="Стоимость: 7438.2" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/black" />
-
-        <TextView
-            android:id="@+id/textViewCostMin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            tools:text="Минимум за день: 12312" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/black" />
-
-        <TextView
-            android:id="@+id/textViewCostMax"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            tools:text="Минимум за день: 12312" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/black" />
-
-        <TextView
-            android:id="@+id/textViewLastDeal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            tools:text="Последняя стоимость: Bitrex" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/black" />
-
-        <TextView
-            android:id="@+id/textViewLastUpdateCoinInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            tools:text="Последняя стоимость: Bitrex" />
 
 
-    </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.fragment.app.FragmentContainerView>

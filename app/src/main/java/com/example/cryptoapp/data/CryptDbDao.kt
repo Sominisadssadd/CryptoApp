@@ -18,8 +18,6 @@ interface CryptDbDao {
     fun getCoinPriceInfo(fSym: String): LiveData<CoinPriceInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE, entity = CoinPriceInfoDbModel::class)
-    fun addCoinPriceInfoList(coinPriceInfo: List<CoinPriceInfoDbModel>)
-
-
+    suspend fun addCoinPriceList(coinPriceInfo: List<CoinPriceInfoDbModel>)
 
 }

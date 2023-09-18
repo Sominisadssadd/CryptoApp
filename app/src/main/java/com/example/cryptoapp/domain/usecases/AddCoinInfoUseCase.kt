@@ -5,7 +5,7 @@ import com.example.cryptoapp.domain.CryptDbRepository
 
 class AddCoinInfoUseCase(val repository: CryptDbRepository) {
 
-    operator fun invoke(list: List<CoinPriceInfoDbModel>) {
+    suspend operator fun invoke(list: List<CoinPriceInfoDbModel>) {
         repository.addCoinPriceInfoList(list)
     }
 }

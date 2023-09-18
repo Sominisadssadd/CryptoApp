@@ -50,25 +50,24 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //Retrofit
-    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    def room_version = "2.2.3"
-    //room
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation 'com.google.dagger:dagger:2.35.1'
+    kapt 'com.google.dagger:dagger-compiler:2.35.1'
 
-    //picasso
+    def room_version = "2.5.2"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    //databinding
-    implementation 'androidx.databinding:databinding-runtime:7.1.0'
-
-    //coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
 
 
 }

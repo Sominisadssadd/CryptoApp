@@ -3,6 +3,8 @@ package com.example.cryptoapp.domain.pojo
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 
 data class CoinPriceInfo(
 
@@ -83,4 +85,4 @@ data class CoinPriceInfo(
     val conversionlastupdate: Int?,
 
     val imageurl: String?,
-)
+): Serializable

@@ -3,7 +3,7 @@ package com.example.cryptoapp.data.api
 import android.util.Log
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {

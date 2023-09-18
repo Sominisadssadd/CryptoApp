@@ -88,4 +88,4 @@ data class CoinPriceInfoDbModel(
     val imageurl: String?,
 
 
-)
+    )
