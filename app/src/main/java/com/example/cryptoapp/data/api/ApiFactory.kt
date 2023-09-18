@@ -1,9 +1,9 @@
-package com.example.cryptoapp.api
+package com.example.cryptoapp.data.api
 
 import android.util.Log
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
@@ -16,7 +16,6 @@ object ApiFactory {
         val retrofit = Retrofit.Builder()
             .client(requestChecker())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .baseUrl(BASE_URL)
             .build()
         return retrofit

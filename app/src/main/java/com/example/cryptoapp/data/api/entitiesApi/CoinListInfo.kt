@@ -1,5 +1,6 @@
-package com.example.cryptoapp.pojo
+package com.example.cryptoapp.data.api.entitiesApi
 
+import com.example.cryptoapp.data.api.entitiesApi.Datum
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
