@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cryptoapp.data.database.entitiesDb.CoinPriceInfoDbModel
 
+
+
 @Database(entities = [CoinPriceInfoDbModel::class], version = 1, exportSchema = false)
 abstract class CryptDataBase : RoomDatabase() {
 
