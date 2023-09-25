@@ -36,7 +36,7 @@ class WorkerRefreshData(
             delay(10000)
         }
 
-        return Result.success()
+
     }
 
 

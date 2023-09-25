@@ -6,22 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.example.cryptoapp.CryptApplication
 import com.example.cryptoapp.R
 import com.example.cryptoapp.databinding.FragmentCoinPriceInfoBinding
 import com.example.cryptoapp.domain.pojo.CoinPriceInfo
 import com.example.cryptoapp.presentation.viewmodels.CoinInfoViewModel
 import com.example.cryptoapp.presentation.viewmodels.CoinViewModelFactory
 import com.squareup.picasso.Picasso
+import javax.inject.Inject
 
 
 class CoinPriceInfoFragment : Fragment() {
 
-    private val viewModelFactory: CoinViewModelFactory by lazy {
-        CoinViewModelFactory(requireActivity().application, currentCoin?.fromsymbol ?: "")
-    }
+    @Inject
+    lateinit var viewModelFactory: CoinViewModelFactory
 
     private val viewModel: CoinInfoViewModel by lazy {
-        ViewModelProvider(this,viewModelFactory)[CoinInfoViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CoinInfoViewModel::class.java]
     }
     private var _binding: FragmentCoinPriceInfoBinding? = null
     private val binding: FragmentCoinPriceInfoBinding
@@ -29,17 +30,30 @@ class CoinPriceInfoFragment : Fragment() {
 
     private var currentCoin: CoinPriceInfo? = null
 
+
+    private val componet by lazy {
+        (requireActivity().application as CryptApplication)
+            .injection
+            .applciationSubComp()
+            .create(currentCoin?.fromsymbol ?: "")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             currentCoin = it.getSerializable(COIN_KEY) as CoinPriceInfo
         }
+        componet.inject(this)
     }
+
+
+    //от currentCoin получаем fSym
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentCoinPriceInfoBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
