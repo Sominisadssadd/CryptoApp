@@ -5,28 +5,26 @@ import android.util.Log
 import androidx.work.*
 import com.example.cryptoapp.data.api.CryptApiRepositoryImpl
 import com.example.cryptoapp.data.database.CryptDbRepositoryImpl
+import com.example.cryptoapp.di.modules.ChildWorkerFactory
 import com.example.cryptoapp.domain.usecases.AddCoinInfoUseCase
 import com.example.cryptoapp.domain.usecases.GetCoinListApiUseCase
 import com.example.cryptoapp.presentation.viewmodels.CoinViewModel
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class WorkerRefreshData(
+class WorkerRefreshData @Inject constructor(
     context: Context,
-    workerParameters: WorkerParameters
+    workerParameters: WorkerParameters,
+    val repositoryApi: CryptApiRepositoryImpl,
+    val repositoryDb: CryptDbRepositoryImpl
 ) : CoroutineWorker(context, workerParameters) {
-
-    private val repositoryApi = CryptApiRepositoryImpl
-    private val repositoryDb = CryptDbRepositoryImpl(context)
-
-    private val useCaseAddListOfCoinsDb = AddCoinInfoUseCase(repositoryDb)
-    private val useCaseGetListOfCoinsInfoApi = GetCoinListApiUseCase(repositoryApi)
 
 
     override suspend fun doWork(): Result {
         while (true) {
             try {
-                val listOfCoins = useCaseGetListOfCoinsInfoApi(15, CoinViewModel.MAIN_CURRENCY)
-                useCaseAddListOfCoinsDb(listOfCoins)
+                val listOfCoins = repositoryApi.getListOfCoins(15, CoinViewModel.MAIN_CURRENCY)
+                repositoryDb.addCoinPriceInfoList(listOfCoins)
 
 
             } catch (e: Exception) {
@@ -52,6 +50,22 @@ class WorkerRefreshData(
         private fun getConstraints(): Constraints {
             return Constraints.Builder().setRequiresCharging(true).build()
         }
+
+    }
+
+    class WorkerFactory @Inject constructor(
+        val repositoryApi: CryptApiRepositoryImpl,
+        val repositoryDb: CryptDbRepositoryImpl
+    ) : ChildWorkerFactory {
+        override fun create(
+            context: Context,
+            workerParameters: WorkerParameters
+        ): ListenableWorker {
+            return WorkerRefreshData(
+                context, workerParameters, repositoryApi, repositoryDb
+            )
+        }
+
     }
 
 }
