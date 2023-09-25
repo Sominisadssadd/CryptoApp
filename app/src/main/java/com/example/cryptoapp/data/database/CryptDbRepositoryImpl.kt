@@ -6,10 +6,15 @@ import androidx.work.WorkManager
 import com.example.cryptoapp.data.CryptDataBase
 import com.example.cryptoapp.data.database.entitiesDb.CoinPriceInfoDbModel
 import com.example.cryptoapp.data.utils.convertDbCoinPriceInfoToDomainCoinPriceInfo
+import com.example.cryptoapp.di.ApplicationScope
 import com.example.cryptoapp.domain.CryptDbRepository
 import com.example.cryptoapp.domain.pojo.CoinPriceInfo
+import javax.inject.Inject
 
-class CryptDbRepositoryImpl(context: Context) : CryptDbRepository {
+@ApplicationScope
+class CryptDbRepositoryImpl @Inject constructor(
+    context: Context
+) : CryptDbRepository {
 
     private val databaseReference = CryptDataBase.getInstance(context).daoDb()
 
@@ -17,14 +22,14 @@ class CryptDbRepositoryImpl(context: Context) : CryptDbRepository {
         databaseReference.addCoinPriceList(list)
     }
 
-    override  fun getSingleCoinPriceInfo(fSym: String) = MediatorLiveData<CoinPriceInfo>().apply {
-        addSource(databaseReference.getCoinPriceInfo(fSym)){
+    override fun getSingleCoinPriceInfo(fSym: String) = MediatorLiveData<CoinPriceInfo>().apply {
+        addSource(databaseReference.getCoinPriceInfo(fSym)) {
             value = convertDbCoinPriceInfoToDomainCoinPriceInfo(it)
         }
     }
 
-    override  fun getListOfCoinsFromDb() =  MediatorLiveData<List<CoinPriceInfo>>().apply {
-        addSource(databaseReference.getListCoinInfo()){
+    override fun getListOfCoinsFromDb() = MediatorLiveData<List<CoinPriceInfo>>().apply {
+        addSource(databaseReference.getListCoinInfo()) {
             value = it.map {
                 convertDbCoinPriceInfoToDomainCoinPriceInfo(it)
             }

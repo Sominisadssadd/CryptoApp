@@ -7,7 +7,7 @@ import com.example.cryptoapp.data.utils.convertListOfApiCoinInfoToDbListOfCoinIn
 import com.example.cryptoapp.domain.CryptApiRepository
 import com.google.gson.Gson
 
-object CryptApiRepositoryImpl : CryptApiRepository {
+object CryptApiRepositoryImpl  : CryptApiRepository {
 
     private val api = ApiFactory.apiService
 
@@ -15,7 +15,6 @@ object CryptApiRepositoryImpl : CryptApiRepository {
         val coinsNames = api.getListOfCoins(limit = limit, tSym = tSym).data?.map {
             it.coinInfo?.name
         }?.joinToString(",") ?: ""
-
 
 
         val coinPriceInfoRawData = api.getPriceInfo(fSym = coinsNames)
